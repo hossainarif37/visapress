@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "Student Visa",
+        "price": 560000,
+        "description": "Foresee the pain and trouble that are bound ensue.",
+        "image": "https://i.ibb.co/z8VNvn4/visa-img-1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Residence Visa",
+        "price": 600000,
+        "description": "Desire that they can foresee trouble bound ensue.",
+        "image": "https://i.ibb.co/N71KvF0/visa-img-2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Business Visa",
+        "price": 720000,
+        "description": "Equally blame belongs those who fail in their duty.",
+        "image": "https://i.ibb.co/JykNNkh/visa-img-3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Tourist Visa",
+        "price": 320000,
+        "description": "Sponsoring and managing work Immigration and Visa",
+        "image": "https://i.ibb.co/7zCSHjT/visa-img-4.jpg"
+    }
+]

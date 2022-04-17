@@ -1,0 +1,41 @@
+.form-container {
+    width: 25%;
+    border: 1px solid #ddd;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.login-button {
+    display: block;
+    width: 100%;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    outline: none;
+    transition: .3s;
+    background-color: #273C66;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.login-button:hover {
+    background-color: #2f4f8f;
+}
+
+.horizontal-line {
+    background: #2f4f8f;
+    height: 1px;
+    width: 127px;
+}
+
+.register-link {
+    color: tomato;
+    transition: .2s;
+}
+
+.register-link:hover {
+    color: #0A58CA;
+}

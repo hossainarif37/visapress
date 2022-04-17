@@ -1,0 +1,16 @@
+.service-button {
+    color: white;
+    background-color: #ff5200;
+    width: 50%;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    outline: none;
+    transition: .3s;
+}
+
+.service-button:hover {
+    background-color: #222;
+    color: white;
+}

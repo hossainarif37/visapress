@@ -1,0 +1,38 @@
+.header {
+    padding: 15px 80px;
+    background-color: #eceaea;
+}
+
+.navbar-items a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: .2s;
+}
+
+.navbar-items a:hover {
+    color: tomato;
+}
+
+.header-title {
+    line-height: 0;
+    width: 300px;
+}
+
+.header-title h2 {
+    font-weight: 800;
+}
+
+.header-title span {
+    color: #ff5200;
+
+}
+
+.header-title p {
+    font-size: 13px;
+}
+
+.navbar-items a {
+    margin-left: 20px;
+}
