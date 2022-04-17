@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './Services.css'
 
 const Services = ({ service }) => {
-    console.log(service);
     const navigate = useNavigate();
     const handleMoreDetails = () => {
         navigate('/checkout')

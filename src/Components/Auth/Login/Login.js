@@ -1,19 +1,40 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import './Login.css'
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('')
+    const navigate = useNavigate();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        hookError,
+    ] = useSignInWithEmailAndPassword(auth);
+    const handleLogin = (e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(email, password)
+    }
+
+    if (user) {
+        navigate('/about')
+    }
+
     return (
         <div>
-            <form className='form-container'>
+            <form onSubmit={handleLogin} className='form-container'>
                 <h1 style={{ color: "#273C66", marginBottom: "30px" }} className='text-center'>Please Login</h1>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id='email' required />
+                    <input onChange={e => setEmail(e.target.value)} type="email" className="form-control" id='email' required />
 
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control mb-4" id='password' required />
+                    <input onChange={e => setPassword(e.target.value)} type="password" className="form-control mb-4" id='password' required />
                 </div>
                 <input className='login-button' type="submit" value="Login" />
                 <div className='d-flex justify-content-center gap-2'>
