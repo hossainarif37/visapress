@@ -24,7 +24,6 @@ const Header = () => {
             <div className='navbar-items d-flex gap-2 gap-lg-4'>
                 <Link to='/'>Home</Link>
                 <Link to='/blogs'>Blogs</Link>
-                <Link to='/home#services'>Services</Link>
                 <Link to='/about'>About</Link>
                 {user ? <button onClick={handleLogout} className='btn-link'>Logout</button> : <Link style={{ color: "#273C66" }} to='/login'>Login</Link>}
             </div>
