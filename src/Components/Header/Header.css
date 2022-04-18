@@ -9,7 +9,6 @@
     font-size: 18px;
     font-weight: 500;
     transition: .2s;
-    margin-left: 20px;
 }
 
 .navbar-items a:hover {
@@ -30,7 +29,7 @@
 
 .header-title {
     line-height: 0;
-    width: 300px;
+
 }
 
 .header-title h2 {

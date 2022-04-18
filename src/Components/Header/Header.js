@@ -15,12 +15,13 @@ const Header = () => {
 
     }
     return (
-        <nav className='d-flex justify-content-between align-items-center header'>
+        <nav className='d-flex flex-column flex-lg-row justify-content-between align-items-center header'>
             <div className='header-title'>
                 <h2><span>VISA</span>PRESS</h2>
                 <p>IMMIGRATION CONSULTING</p>
             </div>
-            <div className='navbar-items'>
+
+            <div className='navbar-items d-flex gap-2 gap-lg-4'>
                 <Link to='/'>Home</Link>
                 <Link to='/blogs'>Blogs</Link>
                 <Link to='/home#services'>Services</Link>

@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <div>
             <Slider></Slider>
-            <div style={{ padding: "50px 80px", margin: "0px" }} className='row row-cols-1 row-cols-lg-4'>
+            <div style={{ padding: "50px 0px", margin: "0px" }} className='row row-cols-1 row-cols-lg-4 px-lg-5 px-2 services-container gap-3 gap-lg-0'>
                 {
                     services.map(service => <Services key={service.id} service={service}></Services>)
                 }
