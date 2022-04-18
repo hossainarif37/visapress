@@ -9,11 +9,24 @@
     font-size: 18px;
     font-weight: 500;
     transition: .2s;
+    margin-left: 20px;
 }
 
 .navbar-items a:hover {
     color: tomato;
 }
+
+.navbar-items button {
+    color: #273C66;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: .2s;
+    border: none;
+    margin-left: 20px;
+    background: none;
+}
+
 
 .header-title {
     line-height: 0;
@@ -31,8 +44,4 @@
 
 .header-title p {
     font-size: 13px;
-}
-
-.navbar-items a {
-    margin-left: 20px;
 }

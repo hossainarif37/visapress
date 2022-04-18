@@ -1,15 +1,18 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './Header.css';
 // import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Header = () => {
+    const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const handleLogout = () => {
-        signOut(auth)
+        signOut(auth);
+        navigate('/')
+
     }
     return (
         <nav className='d-flex justify-content-between align-items-center header'>
@@ -22,7 +25,7 @@ const Header = () => {
                 <Link to='/blogs'>Blogs</Link>
                 <Link to='/services'>Services</Link>
                 <Link to='/about'>About</Link>
-                {user ? <button onClick={handleLogout} className='btn btn-light'>Logout</button> : <Link to='/login'>Login</Link>}
+                {user ? <button onClick={handleLogout} className='btn-link'>Logout</button> : <Link to='/login'>Login</Link>}
             </div>
         </nav>
     );
