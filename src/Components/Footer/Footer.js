@@ -1,13 +1,14 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import './Footer.css'
 const Footer = () => {
     return (
-        <p className='text-center'>
-            This is footer
-        </p>
-        // <footer style={{ padding: "0 80px", backgroundColor: "#273C66", position: "absolute", bottom: "0", width: "100%", height: "50px" }}>
-        //     <p className='text-white text-center pt-3'>This is footer</p>
-        // </footer>
+        <footer className='footer-section d-flex justify-content-center' style={{ backgroundColor: "#122033", width: "100%", padding: "30px 0" }}>
+            Copyright &copy; 2022,Visapress. All rights reserved.
+            <Link to='#'>Terms of Use</Link>
+            <span className='text-white'>|</span>
+            <Link to='#'>Privacy Policy</Link>
+        </footer>
     );
 };
 

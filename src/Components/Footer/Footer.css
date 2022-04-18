@@ -1,0 +1,15 @@
+.footer-section a {
+    text-decoration: none;
+    color: #ddd;
+    margin: 0 10px;
+    border-bottom: 1px solid #ddd;
+    transition: .2s;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-section {
+    color: #ddd;
+}

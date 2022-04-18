@@ -4,10 +4,42 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import './Login.css'
 import googleLogo from '../../../Images/logo/google.png'
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('')
+    const [userInfo, setUserInfo] = useState({
+        email: "",
+        password: "",
+        confirmPass: "",
+    });
+    const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+        general: "",
+    });
+
+    const handleEmail = (e) => {
+        const emailRegex = /\S+@\S+\.\S+/;
+        const validEmail = emailRegex.test(e.target.value);
+        if (validEmail) {
+            setUserInfo({ ...userInfo, email: e.target.value });
+            setErrors({ ...errors, email: "" });
+        } else {
+            setErrors({ ...errors, email: "Invalid email" });
+            setUserInfo({ ...userInfo, email: "" });
+        }
+    }
+    const handlePassword = (e) => {
+        const passwordRegex = /.{6,}/;
+        const validPassword = passwordRegex.test(e.target.value);
+        if (validPassword) {
+            setUserInfo({ ...userInfo, password: e.target.value });
+            setErrors({ ...errors, password: "" });
+        } else {
+            setErrors({ ...errors, password: "Please enter minimum 6 characters!" });
+            setUserInfo({ ...userInfo, password: "" });
+        }
+    }
 
     const [
         signInWithEmailAndPassword,
@@ -18,7 +50,7 @@ const Login = () => {
     const [signInWithGoogle, googleUser, googleLoad, googleError] = useSignInWithGoogle(auth);
     const handleLogin = (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(email, password)
+        signInWithEmailAndPassword(userInfo.email, userInfo.password)
     }
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,7 +60,22 @@ const Login = () => {
             navigate(from, { replace: true })
         }
     }, [user, googleUser])
+    useEffect(() => {
+        const error = hookError || googleError;
+        if (error) {
+            switch (error?.code) {
+                case "auth/invalid-email":
+                    toast("Invalid email provided, please provide a valid email");
+                    break;
 
+                case "auth/invalid-password":
+                    toast("Wrong password. Intruder!!")
+                    break;
+                default:
+                    toast("something went wrong")
+            }
+        }
+    }, [hookError, googleError])
 
 
 
@@ -39,14 +86,17 @@ const Login = () => {
                     <h1 style={{ color: "#273C66", marginBottom: "30px" }} className='text-center'>Please Login</h1>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email address</label>
-                        <input onChange={e => setEmail(e.target.value)} type="email" className="form-control" id='email' required />
+                        <input onChange={handleEmail} type="email" className="form-control" id='email' required />
 
                     </div>
+                    <p className='error-message'>{errors.email}</p>
                     <div className="mb-3">
                         <label htmlFor="password" className="form-label">Password</label>
-                        <input onChange={e => setPassword(e.target.value)} type="password" className="form-control mb-4" id='password' required />
+                        <input onChange={handlePassword} type="password" className="form-control mb-4" id='password' required />
                     </div>
+                    <p className='error-message'>{errors.password}</p>
                     <input className='login-button' type="submit" value="Login" />
+                    <ToastContainer></ToastContainer>
                     <div className='d-flex justify-content-center gap-2'>
                         <span>Haven't an account?</span><Link className='text-decoration-none fw-bold register-link' to='/register'>Creat new account</Link>
                     </div>

@@ -23,9 +23,9 @@ const Header = () => {
             <div className='navbar-items'>
                 <Link to='/'>Home</Link>
                 <Link to='/blogs'>Blogs</Link>
-                <Link to='/services'>Services</Link>
+                <Link to='/home#services'>Services</Link>
                 <Link to='/about'>About</Link>
-                {user ? <button onClick={handleLogout} className='btn-link'>Logout</button> : <Link to='/login'>Login</Link>}
+                {user ? <button onClick={handleLogout} className='btn-link'>Logout</button> : <Link style={{ color: "#273C66" }} to='/login'>Login</Link>}
             </div>
         </nav>
     );
