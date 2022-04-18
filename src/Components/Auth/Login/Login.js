@@ -6,16 +6,19 @@ import './Login.css'
 import googleLogo from '../../../Images/logo/google.png'
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { sendPasswordResetEmail } from 'firebase/auth';
 const Login = () => {
     const [userInfo, setUserInfo] = useState({
         email: "",
         password: "",
         confirmPass: "",
+
     });
     const [errors, setErrors] = useState({
         email: "",
         password: "",
         general: "",
+
     });
 
     const handleEmail = (e) => {
@@ -60,24 +63,14 @@ const Login = () => {
             navigate(from, { replace: true })
         }
     }, [user, googleUser])
-    useEffect(() => {
-        const error = hookError || googleError;
-        if (error) {
-            switch (error?.code) {
-                case "auth/invalid-email":
-                    toast("Invalid email provided, please provide a valid email");
-                    break;
-
-                case "auth/invalid-password":
-                    toast("Wrong password. Intruder!!")
-                    break;
-                default:
-                    toast("something went wrong")
-            }
-        }
-    }, [hookError, googleError])
 
 
+    const handlePasswordReset = () => {
+        sendPasswordResetEmail(auth, userInfo.email)
+            .then(() => {
+                toast('Email sent')
+            })
+    }
 
     return (
         <div>
@@ -96,16 +89,18 @@ const Login = () => {
                     </div>
                     <p className='error-message'>{errors.password}</p>
                     <input className='login-button' type="submit" value="Login" />
+
                     <ToastContainer></ToastContainer>
-                    <div className='d-flex justify-content-center gap-2'>
-                        <span>Haven't an account?</span><Link className='text-decoration-none fw-bold register-link' to='/register'>Creat new account</Link>
-                    </div>
-                    <div className='d-flex align-items-center justify-content-center gap-2 mb-2'>
-                        <div className='horizontal-line'></div>
-                        <span>or</span>
-                        <div className='horizontal-line'></div>
-                    </div>
                 </form>
+                <button onClick={handlePasswordReset} className='btn-link border-0 bg-white'>Reset Password?</button>
+                <div className='d-flex justify-content-center gap-2'>
+                    <span>Haven't an account?</span><Link className='text-decoration-none fw-bold register-link' to='/register'>Creat new account</Link>
+                </div>
+                <div className='d-flex align-items-center justify-content-center gap-2 mb-2'>
+                    <div className='horizontal-line'></div>
+                    <span>or</span>
+                    <div className='horizontal-line'></div>
+                </div>
                 <button onClick={() => signInWithGoogle()} className='d-flex justify-content-center py-2 gap-3 align-items-center w-100 google-button'>
                     <img style={{ width: "25px", height: "25px" }} src={googleLogo} alt="" />
                     <span>Continue with Google</span>
