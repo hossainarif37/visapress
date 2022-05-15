@@ -9,12 +9,20 @@ const RequireAuth = ({ children }) => {
     if (loading) {
         return <p>loading...</p>
     }
-    if (user) {
-        return children;
-    }
-    else {
+    if (!user) {
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
+    if (!user.emailVerified) {
+        return (
+            <div>
+                <h3 className='text-danger'>Your email is not verified!!</h3>
+                <h5 className='text-success'>Please verify your email address</h5>
+                <button>Send verification</button>
+
+            </div>
+        )
+    }
+    return children;
 };
 
 export default RequireAuth;

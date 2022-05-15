@@ -55,10 +55,12 @@ const Login = () => {
         e.preventDefault();
         signInWithEmailAndPassword(userInfo.email, userInfo.password)
     }
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || "/";
     useEffect(() => {
+
         if (user || googleUser) {
             navigate(from, { replace: true })
         }

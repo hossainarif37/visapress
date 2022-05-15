@@ -11,8 +11,6 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const handleLogout = () => {
         signOut(auth);
-        navigate('/')
-
     }
     return (
         <nav className='d-flex flex-column flex-lg-row justify-content-between align-items-center header'>
@@ -22,7 +20,9 @@ const Header = () => {
             </div>
 
             <div className='navbar-items d-flex gap-2 gap-lg-4'>
+
                 <Link to='/'>Home</Link>
+                <Link to='home#services'>Services</Link>
                 <Link to='/blogs'>Blogs</Link>
                 <Link to='/about'>About</Link>
                 {user ? <button onClick={handleLogout} className='btn-link'>Logout</button> : <Link style={{ color: "#273C66" }} to='/login'>Login</Link>}
