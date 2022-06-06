@@ -68,7 +68,7 @@ const Register = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        if (!errors.password) {
+        if (!errors?.password) {
             createUserWithEmailAndPassword(userInfo.email, userInfo.password);
         }
         else {
@@ -105,7 +105,7 @@ const Register = () => {
         <div>
             <div className='form-container'>
                 <form onSubmit={handleRegister}>
-                    <h2 style={{ color: "#273C66", marginBottom: "20px" }} className='text-center'>Please Register</h2>
+                    <h2 style={{ color: "#273C66", marginBottom: "20px" }} className='text-center'>Register</h2>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email address</label>
                         <input onChange={handleEmailChange} type="email" className="form-control" id='email' required />
