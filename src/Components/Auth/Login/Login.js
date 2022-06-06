@@ -78,7 +78,7 @@ const Login = () => {
         <div>
             <div className='form-container'>
                 <form onSubmit={handleLogin} >
-                    <h1 style={{ color: "#273C66", marginBottom: "30px" }} className='text-center'>Please Login</h1>
+                    <h1 style={{ color: "#273C66", marginBottom: "30px" }} className='text-center'>Login</h1>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email address</label>
                         <input onChange={handleEmail} type="email" className="form-control" id='email' required />
